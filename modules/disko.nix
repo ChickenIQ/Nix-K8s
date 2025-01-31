@@ -7,9 +7,9 @@
         content = {
           type = "gpt";
           partitions = {
-            boot = {
+            ESP = {
               priority = 1;
-              name = "nixos-boot";
+              name = "ESP";
               start = "1M";
               end = "1024M";
               type = "EF00";
@@ -24,7 +24,6 @@
             root = {
               size = "100%";
               content = {
-                name = "nixos";
                 type = "btrfs";
                 extraArgs = [ "-f" ];
                 subvolumes = {
