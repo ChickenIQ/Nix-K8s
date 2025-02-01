@@ -1,11 +1,11 @@
 {
   disko.devices.disk.main = {
     type = "disk";
-    device = "/dev/vda";
+    device = "/dev/disk/by-diskseq/1";
     content = {
       type = "gpt";
       partitions = {
-        boot = {
+        ESP = {
           priority = 1;
           name = "ESP";
           start = "1M";
@@ -18,28 +18,13 @@
             mountOptions = [ "umask=0077" ];
           };
         };
-
-        system = {
+        root = {
           size = "100%";
           content = {
             type = "btrfs";
-            extraArgs = ["-f"];
-            subvolumes = {
-              "root" = {
-                mountOptions = [ "compress=zstd" "noatime" ];
-                mountpoint = "/";
-              };
-
-              "nix" = {
-                mountOptions = [ "compress=zstd" "noatime" ];
-                mountpoint = "/nix";
-              };
-
-              "data" = {
-                mountOptions = [ "compress=zstd" "noatime" ];
-                mountpoint = "/data";
-              };
-            };
+            extraArgs = [ "-f" ];
+            mountpoint = "/";
+            mountOptions = [ "compress=zstd" "noatime" ];
           };
         };
       };
