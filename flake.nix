@@ -12,7 +12,7 @@
   listModules = path: nixpkgs.lib.filter(nixpkgs.lib.hasSuffix ".nix")(nixpkgs.lib.filesystem.listFilesRecursive path);
   specialArgs = { inherit inputs cfg listModules; };
 
-  modules = [ ./disk-config.nix ] ++ listModules(./modules) ++ (with inputs; [
+  modules = listModules(./modules) ++ (with inputs; [
     disko.nixosModules.disko
   ]);
 
