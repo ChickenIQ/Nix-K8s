@@ -16,28 +16,15 @@
             mountOptions = ["umask=0077"];
           };
         };
-        system = {
+        SYSTEM = {
           size = "100%";
           content = {
             type = "btrfs";
-            extraArgs = ["-f"];
-            subvolumes = {
-              "root" = {
-                mountpoint = "/";
-                mountOptions = [ "compress=zstd" "noatime" ];
-              };
-
-              "nix" = {
-                mountpoint = "/nix";
-                mountOptions = [ "compress=zstd" "noatime" ];
-              };
-
-              "data" = {
-                mountpoint = "/data";
-                mountOptions = [ "compress=zstd" "noatime" ];
-              };
-            };
+            extraArgs = [ "-f" ];
+            mountpoint = "/";
+            mountOptions = [ "compress=zstd" "noatime" ];
           };
+        };
       };
     };
   };
