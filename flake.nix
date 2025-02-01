@@ -14,7 +14,7 @@
     specialArgs = { inherit inputs cfg listModules; };
 
     modules = listModules(./modules) ++ (with inputs; [
-      impermanence.nixosModules.impermanence
+      # impermanence.nixosModules.impermanence
       disko.nixosModules.disko
     ]);
 
