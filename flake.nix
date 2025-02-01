@@ -13,7 +13,6 @@
     specialArgs = { inherit inputs cfg listModules; };
 
     modules = listModules(./modules) ++ (with inputs; [
-      (modulesPath + "/installer/scan/not-detected.nix")
       disko.nixosModules.disko
     ]);
 
