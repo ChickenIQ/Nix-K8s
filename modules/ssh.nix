@@ -11,10 +11,7 @@
 
   boot.loader = {
     timeout = 0;
-    grub = {
-      enable = true;
-      efiSupport = true;
-      efiInstallAsRemovable = true;
-    };
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
   };
 }
