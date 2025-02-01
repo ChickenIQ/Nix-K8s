@@ -23,11 +23,11 @@
             extraArgs = [ "-f" ];
             subvolumes = {
               "root" = {
-                mountOptions = [ "compress=zstd" "noatime" ];
+                mountOptions = [ "noatime" ];
                 mountpoint = "/";
               };
               "nix" = {
-                mountOptions = [ "compress=zstd" "noatime" ];
+                mountOptions = [ "noatime" ];
                 mountpoint = "/nix";
               };
             };
