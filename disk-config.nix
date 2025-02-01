@@ -1,12 +1,13 @@
+{ lib, ... }:
 {
   disko.devices.disk.main = {
+    device = lib.mkDefault "/dev/vda";
     type = "disk";
-    device = "/dev/vda";
     content = {
       type = "gpt";
       partitions = {
-        ESP = {
-          name = "ESP";
+        esp = {
+          name = "esp";
           size = "1024M";
           type = "EF00";
           content = {
@@ -16,7 +17,7 @@
             mountOptions = ["umask=0077"];
           };
         };
-        SYSTEM = {
+        system = {
           size = "100%";
           content = {
             type = "btrfs";
@@ -33,7 +34,7 @@
             };
           };
         };
-      }; 
+      };
     };
   };
 }
