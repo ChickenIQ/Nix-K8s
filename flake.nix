@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    # impermanence.url = "github:nix-community/impermanence";
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,7 +13,7 @@
     specialArgs = { inherit inputs cfg listModules; };
 
     modules = listModules(./modules) ++ (with inputs; [
-      # impermanence.nixosModules.impermanence
+      (modulesPath + "/installer/scan/not-detected.nix")
       disko.nixosModules.disko
     ]);
 

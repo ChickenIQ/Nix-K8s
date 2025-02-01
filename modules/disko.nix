@@ -5,20 +5,24 @@
     content = {
       type = "gpt";
       partitions = {
+        MBR = {
+          priority = 1; 
+          name = "MBR";
+          size = "1M";
+          type = "EF02";
+        };
         ESP = {
-          priority = 1;
           name = "ESP";
-          start = "1M";
-          end = "1024M";
+          size = "1024M";
           type = "EF00";
           content = {
             type = "filesystem";
             format = "vfat";
             mountpoint = "/boot";
-            mountOptions = [ "umask=0077" ];
+            mountOptions = ["umask=0077"];
           };
         };
-        root = {
+        SYSTEM = {
           size = "100%";
           content = {
             type = "btrfs";
