@@ -1,7 +1,7 @@
 { lib, ... }:
 {
   disko.devices.disk.main = {
-    device = lib.mkDefault "/dev/vda";
+    device = lib.mkDefault "/dev/disk/by-diskseq/1";
     type = "disk";
     content = {
       type = "gpt";
