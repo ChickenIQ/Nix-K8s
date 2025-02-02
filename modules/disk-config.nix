@@ -1,7 +1,5 @@
-{ lib, ... }:
+{ config, lib, ... }:
 {
-  fileSystems."/data".neededForBoot = true;
-  
   disko.devices.disk.main = {
     device = lib.mkDefault "/dev/vda";
     type = "disk";
@@ -43,4 +41,21 @@
       };
     };
   };
+
+  fileSystems."/data".neededForBoot = true;
+
+  boot.initrd.postResumeCommands = lib.mkAfter ''
+    delete_subvolume() {
+      IFS=$'\n'
+      for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
+        delete_subvolume "/temp/$i"
+      done
+      btrfs subvolume delete "$1"
+    }
+    mkdir /temp
+    mount ${config.fileSystems."/".device} /temp
+    [[ -e /temp/root ]] && delete_subvolume "/temp/root"
+    btrfs subvolume create /temp/root
+    umount /temp
+  '';
 }
