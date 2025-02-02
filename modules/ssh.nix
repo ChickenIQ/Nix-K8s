@@ -5,16 +5,9 @@
 
   services.openssh = {
     enable = true;
-    hostkeys = [
-      {
-        bits = 4096;
-        path = "/data/etc/ssh/ssh_host_rsa_key";
-        type = "rsa";
-      }
-      {
-        path = "/data/etc/ssh/ssh_host_ed25519_key";
-        type = "ed25519";
-      }
+    hostKeys = [
+      { path = "/data/etc/ssh/ssh_host_rsa_key"; type = "rsa"; bits = 4096; }
+      { path = "/data/etc/ssh/ssh_host_ed25519_key"; type = "ed25519"; }
     ];
     settings.PasswordAuthentication = false;
   };

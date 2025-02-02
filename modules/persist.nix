@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, ... }:
 {
   environment.persistence."/data" = {
     files = ["/etc/machine-id"];
