@@ -43,7 +43,7 @@
   };
 
   fileSystems."/data".neededForBoot = true;
-
+  
   boot.initrd.postResumeCommands = lib.mkAfter ''
     delete_subvolume() {
       IFS=$'\n'
