@@ -1,7 +1,7 @@
 { lib, ... }:
 {
   disko.devices.disk.main = {
-    device = lib.mkDefault "/dev/disk/by-diskseq/1";
+    device = lib.mkDefault "/dev/vda";
     type = "disk";
     content = {
       type = "gpt";
@@ -21,15 +21,19 @@
           size = "100%";
           content = {
             type = "btrfs";
-            extraArgs = ["-f"];
+            extraArgs = [ "-f" ];
             subvolumes = {
               "root" = {
-                mountOptions = ["noatime"];
+                mountOptions = [ "noatime" ];
                 mountpoint = "/";
               };
               "nix" = {
-                mountOptions = ["noatime"];
+                mountOptions = [ "noatime" ];
                 mountpoint = "/nix";
+              };
+              "data" = {
+                mountOptions = [ "noatime" ];
+                mountpoint = "/data";
               };
             };
           };
