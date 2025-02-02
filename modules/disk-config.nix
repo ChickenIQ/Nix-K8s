@@ -21,14 +21,14 @@
           size = "100%";
           content = {
             type = "btrfs";
-            extraArgs = [ "-f" ];
+            extraArgs = ["-f"];
             subvolumes = {
               "root" = {
-                mountOptions = [ "noatime" ];
+                mountOptions = ["noatime"];
                 mountpoint = "/";
               };
               "nix" = {
-                mountOptions = [ "noatime" ];
+                mountOptions = ["noatime"];
                 mountpoint = "/nix";
               };
             };
