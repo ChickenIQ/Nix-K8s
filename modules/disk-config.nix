@@ -1,5 +1,7 @@
 { lib, ... }:
 {
+  fileSystems."/data".neededForBoot = true;
+  
   disko.devices.disk.main = {
     device = lib.mkDefault "/dev/vda";
     type = "disk";
