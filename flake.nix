@@ -23,8 +23,8 @@
       {
         facter.reportPath = 
           if builtins.pathExists "/etc/os-release" && builtins.match ".*VARIANT_ID=\"?installer\"?.*" (builtins.readFile "/etc/os-release") != null
-          then /data/nix/facter.json
-          else ./files/data/nix/facter.json;
+          then ./files/data/nix/facter.json
+          else /data/nix/facter.json;
       }
     ]);
     
