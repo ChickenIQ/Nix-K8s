@@ -28,11 +28,11 @@
     
     cfg = {
       authorizedKeys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJF4Waz2pv+NAEsLMT1kaFbtYjx6faBRPgHzlHdN30In"];
-      flake = "github:ChickenIQ/Nix-K8s#generic";
+      flake = "github:ChickenIQ/Nix-K8s";
       stateVersion = "24.11";
     };
   in {
-    nixosConfigurations.generic = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       inherit modules specialArgs;
     };
   };

@@ -16,13 +16,11 @@
       experimental-features = "nix-command flakes";
     };
   };
-  
 
   environment.variables.FLAKE = cfg.flake;
 
   programs = {
     nix-index-database.comma.enable = true;
-    gamemode.enable = true;
     nh = {
       enable = true;
       clean = {
