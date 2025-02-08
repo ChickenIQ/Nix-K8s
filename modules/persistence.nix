@@ -9,9 +9,9 @@
       "/etc/machine-id"
     ];
     directories = [
+      "/etc/machineconfig"
       "/var/lib/systemd/coredump"
       "/var/lib/systemd/timers"
-      "/etc/machineconfig"
       "/var/lib/nixos"
       "/var/log"
     ];
