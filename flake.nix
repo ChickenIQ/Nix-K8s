@@ -11,21 +11,14 @@
 
   outputs = { self, nixpkgs, ... } @inputs:
   let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    machineConfig = if builtins.getEnv "NIXOS_INSTALLER" == "true" then /tmp/nixos-installer/data/etc/machineconfig else /etc/machineconfig;
     listModules = path: nixpkgs.lib.filter(nixpkgs.lib.hasSuffix ".nix")(nixpkgs.lib.filesystem.listFilesRecursive path);
     specialArgs = { inherit inputs cfg listModules; };
 
-    modules = listModules(./modules) ++ (with inputs; [
+    modules = listModules(./modules) ++ listModules(machineConfig) ++ (with inputs; [
       nixos-facter-modules.nixosModules.facter
       impermanence.nixosModules.impermanence
       disko.nixosModules.disko
-      {
-        facter.reportPath = 
-          if builtins.pathExists "/etc/os-release" && builtins.match ".*VARIANT_ID=\"?installer\"?.*" (builtins.readFile "/etc/os-release") != null
-          then ./files/data/nix/facter.json
-          else /data/nix/facter.json;
-      }
     ]);
     
     cfg = {
