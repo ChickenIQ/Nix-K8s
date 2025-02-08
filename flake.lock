@@ -35,18 +35,23 @@
         "type": "github"
       }
     },
-    "nixos-facter-modules": {
+    "nix-index-database": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1738752252,
-        "narHash": "sha256-/nA3tDdp/2g0FBy8966ppC2WDoyXtUWaHkZWL+N3ZKc=",
+        "lastModified": 1738466368,
+        "narHash": "sha256-PZhUjtvQZOH3PO0EYdTpQvcqkgkq1NkP2A6w9SPHYsk=",
         "owner": "nix-community",
-        "repo": "nixos-facter-modules",
-        "rev": "60f8b8f3f99667de6a493a44375e5506bf0c48b1",
+        "repo": "nix-index-database",
+        "rev": "46a8f5fc9552b776bfc5c5c96ea3bede33f68f52",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "repo": "nixos-facter-modules",
+        "repo": "nix-index-database",
         "type": "github"
       }
     },
@@ -70,7 +75,7 @@
       "inputs": {
         "disko": "disko",
         "impermanence": "impermanence",
-        "nixos-facter-modules": "nixos-facter-modules",
+        "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs"
       }
     }
